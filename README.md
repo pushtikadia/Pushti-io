@@ -21,7 +21,7 @@
 
 ## 🔮 The Vision
 
-**Pushti-io** represents a shift from static web pages to **spatial digital environments**. 
+**Pushti's PortFolio** represents a shift from static web pages to **spatial digital environments**. 
 
 Designed as the central command center for **Pushti Kadia's** work, this project challenges the standard "flat" portfolio archetype. By leveraging advanced **DOM manipulation**, **hardware-accelerated CSS**, and **procedural lighting**, it creates a tactile, holographic experience that feels alive. 
 
@@ -83,4 +83,4 @@ The dashboard acts as a gateway to my primary repositories:
 
 ---
 
-<p align="center"> <b>Pushti-io</b> • Created by <a href="https://github.com/pushtikadia"><b>Pushti Kadia</b></a> </p>
+<p align="center"> <b>Pushti's PortFolio</b> • Created by <a href="https://github.com/pushtikadia"><b>Pushti Kadia</b></a> </p>
