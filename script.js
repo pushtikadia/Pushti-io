@@ -1,103 +1,85 @@
-// 1. Initialize Icons
+// 1. INITIALIZE ICONS
 lucide.createIcons();
 
-// 2. Spotlight & 3D Tilt Logic
-const cards = document.querySelectorAll('.card');
+// 2. CUSTOM CURSOR PHYSICS
+const cursorDot = document.getElementById('cursor-dot');
+const cursorCircle = document.getElementById('cursor-circle');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
+});
+
+function animateCursor() {
+    const speed = 0.15;
+    cursorX += (mouseX - cursorX) * speed;
+    cursorY += (mouseY - cursorY) * speed;
+    
+    cursorCircle.style.left = `${cursorX}px`;
+    cursorCircle.style.top = `${cursorY}px`;
+    
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Magnetic Hover Effect
+document.querySelectorAll('.magnetic, .nav-links li, .socials i, .project-card').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        document.body.classList.add('hovered');
+        cursorCircle.style.transform = `translate(-50%, -50%) scale(1.5)`;
+    });
+    item.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hovered');
+        cursorCircle.style.transform = `translate(-50%, -50%) scale(1)`;
+    });
+});
+
+// 3. PAGE NAVIGATION
+const navLinks = document.querySelectorAll('.nav-links li');
+const pages = document.querySelectorAll('.page');
+
+window.navigateTo = (pageId) => {
+    navLinks.forEach(link => link.classList.remove('active'));
+    pages.forEach(page => page.classList.remove('active-page'));
+
+    const targetLink = document.querySelector(`[data-target="${pageId}"]`);
+    const targetPage = document.getElementById(pageId);
+
+    if (targetLink) targetLink.classList.add('active');
+    if (targetPage) targetPage.classList.add('active-page');
+};
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const target = link.getAttribute('data-target');
+        window.navigateTo(target);
+    });
+});
+
+// 4. 3D TILT EFFECT
+const cards = document.querySelectorAll('.project-card');
 
 cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
-        // Spotlight variable
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-
-        // 3D Tilt Math
-        // Calculate center of card
+        
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Calculate tilt amount (max 15deg)
-        const rotateX = ((y - centerY) / centerY) * -5; // Negative to tilt away
+        const rotateX = ((y - centerY) / centerY) * -5;
         const rotateY = ((x - centerX) / centerX) * 5;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
     });
 
-    // Reset when mouse leaves
     card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
     });
 });
-
-// 3. Typing Effect
-const texts = ["Computer Science Student", "Data Science Enthusiast", "Full Stack Developer"];
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
-
-function type() {
-    if (count === texts.length) {
-        count = 0;
-    }
-    currentText = texts[count];
-    letter = currentText.slice(0, ++index);
-    
-    document.getElementById('typing-text').textContent = letter;
-    
-    if (letter.length === currentText.length) {
-        setTimeout(() => {
-            // Delete effect logic could go here, but simple cycle for now
-            count++;
-            index = 0;
-        }, 2000); 
-    }
-    setTimeout(type, 100); // Typing speed
-}
-// Start typing (Simple version for stability: just types one then resets)
-// For a loop, we need a backspace function, but let's keep it simple:
-const typingElement = document.getElementById('typing-text');
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeEffect() {
-    const currentWord = texts[textIndex];
-    
-    if (isDeleting) {
-        typingElement.textContent = currentWord.substring(0, charIndex--);
-    } else {
-        typingElement.textContent = currentWord.substring(0, charIndex++);
-    }
-
-    let typeSpeed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentWord.length + 1) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pause at end
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        typeSpeed = 500;
-    }
-
-    setTimeout(typeEffect, typeSpeed);
-}
-typeEffect();
-
-// 4. Real-time Clock (Ahmedabad Time)
-function updateTime() {
-    const options = { 
-        timeZone: 'Asia/Kolkata', 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        hour12: true 
-    };
-    const timeString = new Date().toLocaleTimeString('en-US', options);
-    document.getElementById('local-time').textContent = timeString + " IST";
-}
-setInterval(updateTime, 1000);
-updateTime();
