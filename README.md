@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>✨ P U S H T I - I O</h1>
+  <h1>✨ Pushti's PortFolio</h1>
   <h3>Cinematic Developer Portfolio & Digital Dashboard</h3>
   
   <p>
