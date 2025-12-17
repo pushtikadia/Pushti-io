@@ -3,128 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pushti Kadia | Creative Developer</title>
+    <title>Pushti Kadia | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div class="noise-overlay"></div>
-    
-    <div class="background-orb"></div>
+    <div class="aurora-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
 
-    <div class="container">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-circle" id="cursor-circle"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">PK.</div>
+        <ul class="nav-links">
+            <li class="active" data-target="home">Home</li>
+            <li data-target="work">Work</li>
+            <li data-target="about">About</li>
+            <li data-target="contact">Contact</li>
+        </ul>
+        <div class="socials">
+            <i data-lucide="github" class="magnetic" onclick="window.open('https://github.com/pushtikadia')"></i>
+            <i data-lucide="linkedin" class="magnetic" onclick="window.open('https://linkedin.com/in/pushti-kadia-2bb4a5348/')"></i>
+        </div>
+    </nav>
+
+    <main id="app-container">
         
-        <div class="card col-span-2 row-span-2 title-card" data-tilt>
-            <div class="card-glow"></div>
-            <div class="card-content">
-                <div class="header-row">
-                    <div class="status-pill">
-                        <span class="ping"></span>
-                        <span class="dot"></span>
-                        Available for Hire
+        <section id="home" class="page active-page">
+            <div class="hero-content">
+                <div class="badge">Computer Science Student</div>
+                <h1>Pushti Kadia</h1>
+                <h2>Aspiring <span class="gradient-text">Software Engineer</span> &<br>Data Enthusiast.</h2>
+                <p>Bridging the gap between academic theory and real-world application. Transforming complex data into visual stories with Python and React.</p>
+                <button class="cta-btn magnetic" onclick="navigateTo('work')">View Projects <i data-lucide="arrow-right"></i></button>
+            </div>
+        </section>
+
+        <section id="work" class="page">
+            <div class="section-header">
+                <h2>Academic Projects</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-card magnetic-card">
+                    <div class="card-content">
+                        <div class="card-head">
+                            <span class="year">2025</span>
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <h3>EPOCH</h3>
+                        <p>A 3D planetary surveillance system utilizing NASA EONET data to visualize natural hazards in real-time.</p>
+                        <div class="tags">
+                            <span>Python</span><span>Three.js</span><span>Flask</span>
+                        </div>
+                        <a href="https://github.com/pushtikadia/EPOCH" target="_blank" class="project-link">Codebase</a>
                     </div>
-                    <div id="local-time" class="time-pill">00:00 AM IST</div>
+                </div>
+
+                <div class="project-card magnetic-card">
+                    <div class="card-content">
+                        <div class="card-head">
+                            <span class="year">2025</span>
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3>Trade Pulse</h3>
+                        <p>Financial volatility dashboard tracking live stock & crypto metrics using Yahoo Finance API.</p>
+                        <div class="tags">
+                            <span>Streamlit</span><span>Pandas</span><span>API</span>
+                        </div>
+                        <a href="https://github.com/pushtikadia/trade_pulse" target="_blank" class="project-link">Codebase</a>
+                    </div>
+                </div>
+
+                <div class="project-card magnetic-card">
+                    <div class="card-content">
+                        <div class="card-head">
+                            <span class="year">2025</span>
+                            <i data-lucide="database"></i>
+                        </div>
+                        <h3>PandaTech</h3>
+                        <p>Comprehensive toolkit and documentation for mastering Data Science workflows.</p>
+                        <div class="tags">
+                            <span>Python</span><span>NumPy</span><span>Matplotlib</span>
+                        </div>
+                        <a href="https://github.com/pushtikadia/pandatech" target="_blank" class="project-link">Codebase</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page">
+            <div class="split-layout">
+                <div class="text-side">
+                    <h2>Student & Developer</h2>
+                    <p class="bio">
+                        I am currently pursuing my <b>Computer Science degree</b>, driven by a fascination for how systems utilize data to solve complex problems.
+                    </p>
+                    <p class="bio">
+                        While my academic coursework provides a strong foundation in <b>Algorithms, Data Structures, and System Design</b>, my personal projects allow me to experiment with modern web technologies. I am constantly learning, building, and refining my craft to prepare for a career in software engineering.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span class="num">Focus</span>
+                            <span class="label">Data & Web</span>
+                        </div>
+                        <div class="stat">
+                            <span class="num">Status</span>
+                            <span class="label">Open to Internships</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="hero-text">
-                    <h1>Pushti Kadia</h1>
-                    <div class="typewriter">
-                        <span id="typing-text"></span><span class="cursor">|</span>
+                <div class="skills-side">
+                    <h3>Technical Proficiency</h3>
+                    <div class="skill-group">
+                        <span class="skill-name">Python & Data Science</span>
+                        <div class="progress-bar"><div class="fill" style="width: 90%"></div></div>
                     </div>
-                </div>
-
-                <div class="bio-text">
-                    <p>Engineering digital experiences with <b>Python</b>, <b>React</b>, and <b>Data Science</b>. Transforming raw telemetry into visual intelligence.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card social-card linkedin" data-tilt onclick="window.open('https://linkedin.com/in/pushti-kadia-2bb4a5348/', '_blank')">
-            <div class="card-glow"></div>
-            <div class="content-wrapper">
-                <i data-lucide="linkedin"></i>
-                <span>Connect</span>
-                <i data-lucide="arrow-up-right" class="arrow"></i>
-            </div>
-        </div>
-
-        <div class="card social-card github" data-tilt onclick="window.open('https://github.com/pushtikadia', '_blank')">
-            <div class="card-glow"></div>
-            <div class="content-wrapper">
-                <i data-lucide="github"></i>
-                <span>Source</span>
-                <i data-lucide="arrow-up-right" class="arrow"></i>
-            </div>
-        </div>
-
-        <div class="card col-span-2 project-card epoch" data-tilt onclick="window.open('https://github.com/pushtikadia/EPOCH', '_blank')">
-            <div class="card-glow"></div>
-            <div class="project-bg"></div> <div class="card-content">
-                <div class="project-header">
-                    <div class="icon-box purple"><i data-lucide="globe"></i></div>
-                    <span class="project-year">2024</span>
-                </div>
-                <div class="project-info">
-                    <h3>EPOCH</h3>
-                    <p>3D Planetary Hazard Surveillance System</p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>Three.js</span>
-                        <span>NASA API</span>
+                    <div class="skill-group">
+                        <span class="skill-name">Frontend (React / JS)</span>
+                        <div class="progress-bar"><div class="fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-name">Backend (Flask / SQL)</span>
+                        <div class="progress-bar"><div class="fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-name">Core CS (C++ / DSA)</span>
+                        <div class="progress-bar"><div class="fill" style="width: 80%"></div></div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card row-span-2 stack-card" data-tilt>
-            <div class="card-glow"></div>
-            <div class="card-content">
-                <h3><i data-lucide="cpu"></i> Arsenal</h3>
-                <div class="stack-grid">
-                    <div class="tech-item"><i data-lucide="code-2"></i> Python</div>
-                    <div class="tech-item"><i data-lucide="file-json"></i> React</div>
-                    <div class="tech-item"><i data-lucide="database"></i> SQL</div>
-                    <div class="tech-item"><i data-lucide="bar-chart-3"></i> Pandas</div>
-                    <div class="tech-item"><i data-lucide="terminal"></i> C++</div>
-                    <div class="tech-item"><i data-lucide="git-branch"></i> Git</div>
-                    <div class="tech-item"><i data-lucide="server"></i> Flask</div>
-                    <div class="tech-item"><i data-lucide="layers"></i> NumPy</div>
+        <section id="contact" class="page">
+            <div class="contact-wrapper">
+                <h2>Let's Connect</h2>
+                <p>I am always looking for opportunities to learn and contribute.</p>
+                <a href="mailto:pushtikadia@gmail.com" class="big-email magnetic">pushtikadia@gmail.com</a>
+                
+                <div class="footer-links">
+                    <a href="https://github.com/pushtikadia" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/pushti-kadia-2bb4a5348/" target="_blank">LinkedIn</a>
                 </div>
+                <p class="copyright">© 2024 Pushti Kadia. Built from scratch.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="card col-span-2 project-card trade" data-tilt onclick="window.open('https://github.com/pushtikadia/trade_pulse', '_blank')">
-            <div class="card-glow"></div>
-            <div class="card-content">
-                <div class="project-header">
-                    <div class="icon-box green"><i data-lucide="trending-up"></i></div>
-                    <span class="project-year">2023</span>
-                </div>
-                <div class="project-info">
-                    <h3>Trade Pulse</h3>
-                    <p>Real-time Financial Volatility Dashboard</p>
-                    <div class="tech-stack">
-                        <span>Streamlit</span>
-                        <span>Pandas</span>
-                        <span>Yahoo Finance</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card email-card" data-tilt onclick="location.href='mailto:pushtikadia@gmail.com'">
-            <div class="card-glow"></div>
-            <div class="content-wrapper">
-                <div class="mail-icon-anim">
-                    <i data-lucide="mail"></i>
-                </div>
-                <span>pushtikadia@gmail.com</span>
-            </div>
-        </div>
-
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
